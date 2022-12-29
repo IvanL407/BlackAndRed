@@ -52,10 +52,7 @@
         let row = table.insertRow(-1);
         let c1 = row.insertCell(0);
         c1.innerText = "Player added " + num + " tokens to their red.";
-        if (checkWin().equals(false))
-        {
-            computerRoll();
-        }
+        computerRoll();
     }
     function addBlack()
     {
@@ -69,10 +66,7 @@
         let row = table.insertRow(-1);
         let c1 = row.insertCell(0);
         c1.innerText = "Player added " + num + " tokens to their black.";
-        if (checkWin().equals(false))
-        {
-            computerRoll();
-        }
+        computerRoll();
     }
 
     function removeRed()
@@ -87,10 +81,7 @@
         let row = table.insertRow(-1);
         let c1 = row.insertCell(0);
         c1.innerText = "Player removed " + num + " tokens from computer's red.";
-        if (checkWin().equals(false))
-        {
-            computerRoll();
-        }
+        computerRoll();
     }
     function removeBlack()
     {
@@ -104,10 +95,7 @@
         let row = table.insertRow(-1);
         let c1 = row.insertCell(0);
         c1.innerText = "Player removed " + num + " tokens from computer's black.";
-        if (checkWin().equals(false))
-        {
-            computerRoll();
-        }
+        computerRoll();
     }
 
     function computerRoll()
