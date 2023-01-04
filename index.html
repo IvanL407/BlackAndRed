@@ -80,7 +80,8 @@
         let table = document.getElementById("myTable");
         let row = table.insertRow(-1);
         let c1 = row.insertCell(0);
-        c1.innerText = "Computer added " + rollFromComputer + " tokens to their black.";
+        c1.innerText = "Computer added " + rollFromComputer + " tokens to player's black.";
+        //computerRoll();
     }
 
     function removeRed()
@@ -118,7 +119,30 @@
         compChoice = parseInt(Math.random()*4 + 1);
         enhancement = parseInt(Math.random()*4 + 1);
 
-        if (enhancement < 4)
+        if (enhancement == 4)
+        {
+            if (compChoice == 1)
+            {
+                computerAddRed();
+                checkWin();
+            } 
+            else if (compChoice == 2)
+            {
+                computerAddBlack();
+                checkWin();
+            }
+            else if (compChoice == 3)
+            {
+                computerRemoveRed();
+                checkWin();
+            }
+            else if (compChoice == 4)
+            {
+                computerRemoveBlack();
+                checkWin();
+            }
+        }
+        else
         {
             if (computerred < playerred)
             {
@@ -134,31 +158,6 @@
                 }
             }
         }
-        else if (enhancement == 4)
-        {
-            secondenhancement = parseInt(Math.random()*4 + 1);
-            if (secondenhancement == 1)
-            {
-                computerAddRed();
-                checkWin();
-            } 
-            else if (secondenhancement == 2)
-            {
-                computerAddBlack();
-                checkWin();
-            }
-            else if (secondenhancement == 3)
-            {
-                computerRemoveRed();
-                checkWin();
-            }
-            else
-            {
-                computerRemoveBlack();
-                checkWin();
-            }
-        }
-        
     }
 
     function computerAddRed()
@@ -254,7 +253,7 @@
 </head>
 <body onload = "initialize();">
     <h1>Black and Red</h1>
-    <p>Whoever has the most red tokens when either player has zero black tokens wins!</p>
+    <p>Whoever has the most red tokens when a player has zero black tokens wins!</p>
 
     <br>Player Black Tokens: <span id = "blacktokens">12</span></br>
     <br>Player Red Tokens: <span id = "redtokens">12</span></br>
