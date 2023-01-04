@@ -69,6 +69,21 @@
         computerRoll();
     }
 
+    function addBlackFromComputer(rollFromComputer)
+    {
+        playerblack += rollFromComputer;
+        if (playerblack < 0)
+        {
+            playerblack = 0;
+        }
+        display();
+        let table = document.getElementById("myTable");
+        let row = table.insertRow(-1);
+        let c1 = row.insertCell(0);
+        c1.innerText = "Computer added " + rollFromComputer + " tokens to their black.";
+        //computerRoll();
+    }
+
     function removeRed()
     {
         computerred -= num;
@@ -102,26 +117,49 @@
     {
         compRoll = parseInt(Math.random()*6 + 1);
         compChoice = parseInt(Math.random()*4 + 1);
-        if (compChoice == 1)
+        enhancement = parseInt(Math.random()*4 + 1);
+
+        if (enhancement < 4)
         {
-            computerAddRed();
-            checkWin();
+            if (computerred < playerred)
+            {
+                if (computerblack < playerblack)
+                {
+                    computerAddBlack();
+                    checkWin();
+                }
+                else
+                {
+                    addBlackFromComputer(compRoll);
+                    checkWin();
+                }
+            }
         }
-        if (compChoice == 2)
+        else if (enhancement == 4)
         {
-            computerAddBlack();
-            checkWin();
+            secondenhancement = parseInt(Math.random()*4 + 1);
+            if (secondenhancement == 1)
+            {
+                computerAddRed();
+                checkWin();
+            } 
+            else if (secondenhancement == 2)
+            {
+                computerAddBlack();
+                checkWin();
+            }
+            else if (secondenhancement == 3)
+            {
+                computerRemoveRed();
+                checkWin();
+            }
+            else
+            {
+                computerRemoveBlack();
+                checkWin();
+            }
         }
-        if (compChoice == 3)
-        {
-            computerRemoveRed();
-            checkWin();
-        }
-        if (compChoice == 4)
-        {
-            computerRemoveBlack();
-            checkWin();
-        }
+        
     }
 
     function computerAddRed()
@@ -154,7 +192,7 @@
 
     function computerRemoveRed()
     {
-        playerredd -= compRoll;
+        playerred -= compRoll;
         if (playerred < 0)
         {
             playerred = 0;
@@ -217,7 +255,7 @@
 </head>
 <body onload = "initialize();">
     <h1>Black and Red</h1>
-    <p>Whoever has the most red tokens when a player has zero black tokens wins!</p>
+    <p>Whoever has the most red tokens when either player has zero black tokens wins!</p>
 
     <br>Player Black Tokens: <span id = "blacktokens">12</span></br>
     <br>Player Red Tokens: <span id = "redtokens">12</span></br>
